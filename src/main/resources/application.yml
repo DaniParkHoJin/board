@@ -13,6 +13,7 @@ spring:
     username: PROJECT
     password: _aA123456
 
+
   # 파일 업로드 설정
   servlet:
     multipart:
