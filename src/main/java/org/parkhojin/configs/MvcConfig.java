@@ -13,8 +13,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.ResourceBundle;
-
 @Configuration
 @EnableConfigurationProperties(FileUploadConfig.class)
 public class MvcConfig implements WebMvcConfigurer {
@@ -27,6 +25,10 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
+                .setViewName("front/main/index");
+        registry.addViewController("/mypage")
+                .setViewName("front/main/index");
+        registry.addViewController("/admin")
                 .setViewName("front/main/index");
     }
 
