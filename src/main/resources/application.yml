@@ -32,7 +32,10 @@ spring:
   # 타임리프 설정
   thymeleaf:
     cache: false
-    prefix: file:src/mani/resources/static/
+    prefix: file:src/main/resources/templates/
+
+  flyway:
+    enabled: true
 
 file:
   upload:
