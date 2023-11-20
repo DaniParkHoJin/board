@@ -13,6 +13,7 @@ spring:
     username: PROJECT
     password: _aA123456
 
+
   # 파일 업로드 설정
   servlet:
     multipart:
@@ -31,7 +32,10 @@ spring:
   # 타임리프 설정
   thymeleaf:
     cache: false
-    prefix: file:src/mani/resources/static/
+    prefix: file:src/main/resources/templates/
+
+  flyway:
+    enabled: true
 
 file:
   upload:
