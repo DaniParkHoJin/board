@@ -1,27 +1,58 @@
 package org.parkhojin.entities;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.parkhojin.commons.constants.MemberType;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
 @Data
+@Builder
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(indexes = {
+        @Index(name="idx_member_userNm", columnList = "userNm"),
+        @Index(name="idx_member_mobile", columnList = "mobile")
+})
 public class Member {
-
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userNo;
 
+    @Column(length=65, unique = true, nullable = false)
     private String email;
 
+    @Column(length=65, name="pw", nullable = false)
     private String password;
 
+    @Column(length=40, nullable = false)
     private String userNm;
 
+    @Column(length=11)
     private String mobile;
 
-    private MemberType mytpe = MemberType.USER;
+    @Column(length=10, nullable = false)
+    @Enumerated(EnumType.STRING)
+    private MemberType mtype = MemberType.USER;
 
+    @Column(updatable = false)
+    @CreationTimestamp
     private LocalDateTime regDt;
+
+    @Column(insertable = false)
+    @UpdateTimestamp
     private LocalDateTime modDt;
+
+
+
+    /*
+    @Temporal()
+    private Date date;
+
+     */
 }
